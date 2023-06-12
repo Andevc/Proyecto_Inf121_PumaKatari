@@ -11,10 +11,11 @@ namespace PumaKatariConsola {
         private Parada[] paradas = new Parada[40];
         public Ruta(){  tarifa = new Pasaje(); } // Constructor vacio para el Cast
         // Constuctor Parametrizado para Adicionar un Objeto Bus al Archivo
-        public Ruta( string nomRuta, int nroParadas, double pasaje){
+        public Ruta( string nomRuta, int nroParadas, double pasaje, Parada[] paradas){
             this.nomRuta = nomRuta;
             this.nroParadas = nroParadas;
             this.tarifa = new Pasaje(pasaje);
+            this.paradas = paradas;
         }
 
         // Getters y Setters
@@ -43,7 +44,7 @@ namespace PumaKatariConsola {
             j.Write(this.nomRuta);
             j.Write(this.nroParadas);
             this.tarifa.WrPasaje(j);
-            for (int i = 0; i < this.nroParadas; i++) { this.paradas[i] = new Parada(); this.paradas[i].WrParada(j); }
+            for (int i = 0; i < this.nroParadas; i++) {  this.paradas[i].WrParada(j); }
 }      
       /* 
       public void pasajeroRandom(Bus x){

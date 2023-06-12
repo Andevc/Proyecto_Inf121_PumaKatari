@@ -29,6 +29,8 @@ namespace PumaKatari.Screens.DataFill
                    txtNroParada.Text = txtNroParada.Text+" Nro. "+nroParada.ToString();
             }
         }
+
+        
         public Paradas()
         {
             InitializeComponent();
@@ -36,9 +38,7 @@ namespace PumaKatari.Screens.DataFill
         }
         private void btnAdicionar_Click(object sender, RoutedEventArgs e)
         {
-            Ruta ruta = new Ruta();
-            string ubicacion = txtUbicaconParada.Text;
-            ruta.AdiParada(ubicacion);
+           
             this.Close();
         }
     }

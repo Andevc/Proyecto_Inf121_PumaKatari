@@ -6,12 +6,12 @@ namespace PumaKatariConsola {
       public ArchRuta(string nomArch) { this.nomArch = nomArch; }
       public void CrearRegRuta(){ if (File.Exists(nomArch) ) { File.Delete(nomArch); } }
 
-      public void AdiRuta(string nomRuta, string tarifa, string nroParadas){
+      public void AdiRuta(string nomRuta, string tarifa, string nroParadas, Parada[] parada){
          Stream file = File.Open(nomArch,FileMode.OpenOrCreate);
          BinaryWriter write = new BinaryWriter(file);
          Console.WriteLine("\n- REGISTRO DE RUTAS (Limite 7): ");
          try {         
-            Ruta regRuta = new Ruta(nomRuta,int.Parse(nroParadas),Double.Parse(tarifa));
+            Ruta regRuta = new Ruta(nomRuta,int.Parse(nroParadas),Double.Parse(tarifa),parada);
             write.Seek(0,SeekOrigin.End);
             regRuta.WriteRuta(write);            
          }

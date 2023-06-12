@@ -32,7 +32,7 @@ namespace PumaKatari.Screens
         {
             regRuta.CrearRegRuta();
             MessageBox.Show("Nuevo Archivo de Rutas Creado");
-
+            ActualizarArchivo();
         }
 
         private void btnAdicionar_Click(object sender, RoutedEventArgs e)

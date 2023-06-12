@@ -26,19 +26,23 @@ namespace PumaKatari.Screens.DataFill
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
-        {            
+        {
+          
+            Parada[] parada = new Parada[50];
             for (int i = 0; i < int.Parse(txtNroParadas.Text); i++)
             {
                 Screens.DataFill.Paradas regParadas = new Screens.DataFill.Paradas();
                 regParadas.NroParada = i + 1;
                 regParadas.ShowDialog();
+                parada[i] =new Parada(regParadas.txtUbicaconParada.Text);
             }
-
-            string nomRuta = txtNombreRuta.Text;
+    
+                string nomRuta = txtNombreRuta.Text;
             string tarifa = txtTarifa.Text;
             string nroParadas = txtNroParadas.Text;
             ArchRuta regRuta = new ArchRuta("RegistroRutas.dat");
-            regRuta.AdiRuta(nomRuta,tarifa,nroParadas);
+
+            regRuta.AdiRuta(nomRuta,tarifa,nroParadas,parada);
 
             this.Close();
 
