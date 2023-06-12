@@ -5,141 +5,167 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PumaKatari.Screens.DataFill"
         mc:Ignorable="d"
-       
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        
-        
-        Title="Fecha_Recorridos" Height="450" Width="350">
+        Title="Fecha_Recorridos" Height="450" Width="350"
+        Icon="/Screens/DataFill/log.png">
     <Border>
         <Border.Background>
-            <ImageBrush ImageSource="/Screens/DataFill/fechas.png"
+            <ImageBrush ImageSource="/Screens/DataFill/bgData.png"
+                        AlignmentX="Center"
+                        AlignmentY="Center"
                         Stretch="Fill"/>
         </Border.Background>
-        <Grid Width="350" Height="400"
-              HorizontalAlignment="Center"                
-              VerticalAlignment="Center">
-            
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="124" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-            <Label Content="Fechas de Recorrido" 
-                   HorizontalAlignment="Center" Height="38" 
-                   VerticalAlignment="Top" Width="260" 
-                   FontFamily="Square721 BT" 
-                   FontSize="24" 
-                   HorizontalContentAlignment="Center" 
-                   Margin="0,90,0,0"/>
+            <StackPanel
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center" 
+                        Width="200" Height="62" Margin="0,38,0,0">
+                <TextBlock Text="FECHA DE RECORRIDOS"
+                               TextWrapping="Wrap"
+                               Foreground="#282525"
+                               FontSize="25"
+                               FontFamily="Square721 BT"
+                               FontWeight="Bold"  
+                               TextAlignment="Center"
+                       />
 
-            <Label Content="ID Bus : " HorizontalAlignment="Left" Margin="77,152,0,0" VerticalAlignment="Top" FontFamily="Square721 BT"/>
+            </StackPanel>
 
-            <Label Content="Fecha : " HorizontalAlignment="Left" Margin="81,202,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.276,-0.577" FontFamily="Square721 BT"/>
+            <StackPanel Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Orientation="Vertical" Width="280" Margin="0,8,0,8">
 
-            <TextBox x:Name="txtIdBus" 
-                     HorizontalAlignment="Left"
-                     Margin="135,155,0,0" 
-                     VerticalAlignment="Top"
-                     Width="120" Height="20" 
-                     FontFamily="Square721 BT"
-                     Background="Transparent"
-                     Foreground="Black"
-                     CaretBrush="Gray"
-                     BorderBrush="#1C1D24"
-                     BorderThickness="0,0,0,1"
-                     VerticalContentAlignment="Center"
-                     >
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0,30">
+                    <TextBlock  Text="Fecha Recorrido : " 
+                                FontFamily="Square721 BT"
+                                Margin="5,0"
+                                />
 
-            </TextBox>
+                    <TextBox x:Name="txtFechaRec"
+                             Width="150" Height="20" 
+                             Margin="5,0"
+                             FontFamily="Square721 BT"
+                             Background="Transparent"
+                             Foreground="Black"
+                             CaretBrush="Gray"
+                             BorderBrush="#1C1D24"
+                             BorderThickness="0,0,0,1"
+                             VerticalContentAlignment="Center" 
+                     />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"                             
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0,5">
+                    <TextBlock  Text="ID Bus : " 
+                                FontFamily="Square721 BT"
+                                Margin="5,0"/>
+                    <TextBox x:Name="txtIdBus"
+                             Margin="5,0"
+                             Width="150" Height="20" 
+                             FontFamily="Square721 BT"
+                             Background="Transparent"
+                             Foreground="Black"
+                             CaretBrush="Gray"
+                             BorderBrush="#1C1D24"
+                             BorderThickness="0,0,0,1"
+                             VerticalContentAlignment="Center" 
+                     />
+                </StackPanel>
 
-            <TextBox x:Name="txtFecha" 
-                     HorizontalAlignment="Left" 
-                     Margin="136,205,0,0" 
-                     VerticalAlignment="Top" 
-                     Width="120" Height="20" 
-                     FontFamily="Square721 BT"
-                     Background="Transparent"
-                     Foreground="Black"
-                     CaretBrush="Gray"
-                     BorderBrush="#1C1D24"
-                     BorderThickness="0,0,0,1"
-                     VerticalContentAlignment="Center"/>
+            </StackPanel>
 
-            <Button x:Name="btnAdiFr" 
-                    Content="A G R E G A R"
-                    Margin="80,240,80,71"
-                    Foreground="White"
-                    FontWeight="Bold"
-                    Cursor="Hand"
-                    
-                    Click="btnAdiFr_click" FontFamily="Square721 BT"
+            <StackPanel Grid.Row="2"
+                        VerticalAlignment="Center" Height="120">
+
+                <Button x:Name="btnAgregar" 
+                        Content="A G R E G A R"
+                        Margin="0,10"                    
+                        Height="40" Width="160" 
+                        Foreground="White"
+                        FontFamily="Square721 BT"
+                        FontWeight="Bold"
+                        FontSize="12"
+                        Cursor="Hand"                    
+                        Click="btnAgregar_Click" 
                     >
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="#f9b573"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#282525"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="160" Height="40"
-                                CornerRadius="20"
-                                BorderBrush="Black"
-                                
-                                Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#282525"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#f9b573"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-                <Button.Effect>
-                    <DropShadowEffect 
-                        ShadowDepth="5"
-                        Direction="315"
-                        Opacity="0.4"
-                        Color="Black"
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="5"
+                                          Direction="315"
+                                          Opacity="0.4"
+                                          Color="Black"
                         />
-                </Button.Effect>
-            </Button>
-            <Button x:Name="btnCancel" 
-                    Content="C A N C E L A R"  
-                    Margin="95,320,95,40" 
-                    Height="40" Width="160" 
-                    Foreground="White"
-                    FontFamily="Square721 BT"
-                    FontWeight="Bold"
-                    Cursor="Hand"
-                    Click="btnCancel_click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="#f9b573"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#282525"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="160" Height="40"
-                                CornerRadius="20"
-                                Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
+                    </Button.Effect>
+                </Button>
+
+                <Button x:Name="btnCancel" 
+                        Content="C A N C E L A R"  
+                        Margin="0,10"
+                        Height="40" Width="160" 
+                        Foreground="White"
+                        FontFamily="Square721 BT"
+                        FontWeight="Bold"
+                        FontSize="12"
+                        Cursor="Hand"
+                        Click="btnCancel_click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#282525"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#f9b573"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-                <Button.Effect>
-                    <DropShadowEffect 
-                        ShadowDepth="5"
-                        Direction="315"
-                        Opacity="0.4"
-                        Color="Black"
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="5"
+                                          Direction="315"
+                                          Opacity="0.4"
+                                          Color="Black"
                         />
-                </Button.Effect>
-            </Button>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
         </Grid>
     </Border>
 

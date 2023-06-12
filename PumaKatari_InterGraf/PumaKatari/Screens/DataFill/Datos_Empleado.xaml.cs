@@ -24,19 +24,18 @@ namespace PumaKatari.Screens.DataFill
         {
             InitializeComponent();
         }
-
-        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            string nombre = txtNombreEmp.Text;
-            string edad = txtEdadEmp.Text;
-            string idEmp = txtIdEmp.Text;
-            string cargo = txtCargoEmp.Text;
+            string nombre = txtNombre.Text;
+            string edad = txtEdad.Text;
+            string idEmp = txtIdEmpleado.Text;
+            string cargo = txtCargo.Text;
 
             ArchEmpleado regEmpleado = new ArchEmpleado("RegistroEmpleados.dat");
-            regEmpleado.AdiEmpleado(nombre, edad, idEmp,cargo);
+            regEmpleado.AdiEmpleado(nombre, edad, idEmp, cargo);
             this.Close();
-
         }
+
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

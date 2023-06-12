@@ -1,35 +1,50 @@
 ﻿using System;
 using System.IO;
+using System.Xml.Serialization;
+
 namespace PumaKatariConsola {  
-   [Serializable]
-   public class Ruta {
-      private string nomRuta;
-      private int nroParadas; 
-      private Pasaje tarifa;
-      private Parada[] paradas = new Parada[40];
-      public Ruta(){  tarifa = new Pasaje(); } // Constructor vacio para el Cast
-      // Constuctor Parametrizado para Adicionar un Objeto Bus al Archivo
-      public Ruta( string nomRuta, int nroParadas){
-         this.nomRuta = nomRuta;
-         this.nroParadas = nroParadas;
-      }
-      public int NroParadas { get {return this.nroParadas; }  set {this.nroParadas = value; } }
-      public string NomRuta { get {return this.nomRuta; }  set {this.nomRuta = value; } }
-      public Pasaje Tarifa { get {return this.tarifa;}  set {this.tarifa = value; } }
-      public Parada[] Paradas { get {return this.paradas; }  set {this.paradas = value; } }
-      
-      public void ReadRuta(BinaryReader j){
-         this.nomRuta = j.ReadString();
-         this.nroParadas = j.ReadInt32();
-         this.tarifa.RdPasaje(j);
-         for (int i = 0; i < this.nroParadas; i++) { this.paradas[i] = new Parada(); this.paradas[i].RdParada(j);}
-      }
-      public void WriteRuta(BinaryWriter j){
-         j.Write(this.nomRuta);
-         j.Write(this.nroParadas);
-         this.tarifa.WrPasaje(j);
-         for (int i = 0; i < this.nroParadas; i++) { this.paradas[i].WrParada(j); }
-      }      
+    [Serializable]
+    public class Ruta {
+        private string nomRuta;
+        private int nroParadas; 
+        private Pasaje tarifa;
+        private Parada[] paradas = new Parada[40];
+        public Ruta(){  tarifa = new Pasaje(); } // Constructor vacio para el Cast
+        // Constuctor Parametrizado para Adicionar un Objeto Bus al Archivo
+        public Ruta( string nomRuta, int nroParadas, double pasaje){
+            this.nomRuta = nomRuta;
+            this.nroParadas = nroParadas;
+            this.tarifa = new Pasaje(pasaje);
+        }
+
+        // Getters y Setters
+        public int NroParadas { get {return this.nroParadas; }  set {this.nroParadas = value; } }
+        public string NomRuta { get {return this.nomRuta; }  set {this.nomRuta = value; } }
+        public Pasaje Tarifa { get {return this.tarifa;}  set {this.tarifa = value; } }
+        public Parada[] Paradas { get {return this.paradas; }  set {this.paradas = value; } }
+
+        // Adicionar Parada
+        public void AdiParada(string ubiParada)
+        {
+            this.paradas[this.nroParadas] = new Parada(ubiParada);
+            this.nroParadas++;
+        }
+
+        // Read Ruta      
+        public void ReadRuta(BinaryReader j){
+            this.nomRuta = j.ReadString();
+            this.nroParadas = j.ReadInt32();
+            this.tarifa.RdPasaje(j);
+            for (int i = 0; i < this.nroParadas; i++) { this.paradas[i] = new Parada(); this.paradas[i].RdParada(j);}
+        }
+
+        // Write Ruta
+        public void WriteRuta(BinaryWriter j){
+            j.Write(this.nomRuta);
+            j.Write(this.nroParadas);
+            this.tarifa.WrPasaje(j);
+            for (int i = 0; i < this.nroParadas; i++) { this.paradas[i] = new Parada(); this.paradas[i].WrParada(j); }
+}      
       /* 
       public void pasajeroRandom(Bus x){
          string[] tipoPersona = new string[]{"estandar","estudiante","discapacidad","adulto mayor","estandar"};

@@ -6,48 +6,215 @@
         xmlns:local="clr-namespace:PumaKatari.Screens"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Fechas De Recorrido Por Bus" Height="350" Width="500" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-    <Grid Width="500" Height="350" VerticalAlignment="Center" HorizontalAlignment="Center">
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        
-        <Button x:Name="btnCrear" 
-                Content="Crear" 
-                Height="30" Width="100" 
-                Margin="0,72,20,0" 
-                HorizontalAlignment="Right" 
-                 Click="btnCrear_Click" VerticalAlignment="Top" Grid.Column="1"/>
-        
-        <Button x:Name="btnAdicionar" 
-                Content="Adicionar" 
-                Height="30" Width="100" 
-                Margin="0,132,20,188" 
-                HorizontalAlignment="Right" 
-                Click="btnAdicionar_Click" Grid.Column="1"/>
+        ResizeMode="CanMinimize"
+        Icon="/Screens/log.png"
+        Title="Fechas De Recorrido Por Bus" Height="400" Width="650" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="/Screens/bgRegFechas.png"/>
+        </Border.Background>
+        <Grid Margin="20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*"  />
+            </Grid.RowDefinitions>
+            <Grid>
+                <TextBlock Text="RECORRIDO POR FECHAS"
+                           Foreground="#282525"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           FontSize="30"
+                           FontFamily="Square721 BT"
+                           FontWeight="SemiBold"     
+                           Margin="100,0,0,0"
+                       >
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="Black"
+                                          Direction="270"                  
+                                          Opacity="0.5"
+                                          ShadowDepth="5"
+                                          BlurRadius="10"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <DataGrid x:Name="dgFechaRecorrido" Margin="0,5,0,0"
+                              CanUserResizeColumns="False"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="Column"
+                              Background="#AAf5f5f5"
+                              BorderBrush="#282525"
+                              BorderThickness="2"
+                              ColumnWidth="SizeToCells" 
+                              FontFamily="Square721 BT"
+                              FrozenColumnCount="6" 
+                              Height="234" Width="400">
+                        
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}" >
+                                <Setter Property="Background" Value="#282525" />
+                                <Setter Property="Foreground" Value="#F5F5F5" />
+                                <Setter Property="BorderBrush" Value="#F5F5F5" />
+                                <Setter Property="BorderThickness" Value="0,0,2,0" />
+                            </Style>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers >
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#AAf9b573" />
+                                        <Setter Property="Foreground" Value="#282525" />
+                                        <Setter Property="BorderBrush" Value="#F5F5F5" />
 
-        <Button x:Name="btnClose" 
-                Content="Salir" 
-                Height="30" Width="100" 
-                Margin="0,192,20,128" 
-                HorizontalAlignment="Right" 
-                RenderTransformOrigin="0.75,4.252" 
-                Click="btnClose_Click" Grid.Column="1"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.Resources>
 
-        <DataGrid x:Name="dgFechaRecorrido" Margin="40,0,138,0" FrozenColumnCount="2" Grid.ColumnSpan="2" Height="290" VerticalAlignment="Center">
-            <DataGrid.Resources>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="#e1e1e1" />
-                    <Setter Property="Foreground" Value="Black" />
-                </Style>
-            </DataGrid.Resources>
+                        <DataGrid.Columns > 
+                            <DataGridTextColumn Header=" Fecha Recorrido" 
+                                                Width="200"
+                                                IsReadOnly="True"
+                                                Binding="{Binding FechaReg}" />
+                            <DataGridTextColumn Header=" ID Bus"
+                                                Width="200" 
+                                                IsReadOnly="True"
+                                                Binding="{Binding IdBus}" />
+                        </DataGrid.Columns>
+                        
+                    </DataGrid>
+                </StackPanel>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header = " ID Bus " Binding = "{Binding IdBus}" Width="160" />
-                <DataGridTextColumn Header = " Fecha Recorrido" Binding = "{Binding FechaReg}" Width="160" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+                <Grid Grid.Column="1"
+                      Width="200">
+                    <StackPanel Margin="30,0">
+                        <Button x:Name="btnCrear" 
+                            Content="C R E A R"
+                            Height="40" 
+                            Margin="0,20,0,20"
+                            Cursor="Hand"
+                            Foreground="#F5F5F5"
+                            FontFamily="Square721 BT"
+                            FontWeight="SemiBold"
+                            FontSize="12"                                                        
+                            HorizontalContentAlignment="Left"
+                            Click="btnCrear_Click">
+                            
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#282525"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#f9b573"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="20"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="5"
+                                                  Direction="315"
+                                                  Opacity="0.4"
+                                                  Color="Black" />
+                            </Button.Effect>
+                            
+                        </Button>
+
+                        <Button x:Name="btnAdicionar" 
+                            Content="A D I C I O N A R"
+                            Height="40" 
+                            Margin="0,20,0,20"
+                            Cursor="Hand"
+                            Foreground="#F5F5F5"
+                            FontFamily="Square721 BT"
+                            FontWeight="SemiBold"
+                            FontSize="12"                                                        
+                            HorizontalContentAlignment="Left"
+                            Click="btnAdicionar_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#282525"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#f9b573"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Button.Effect>
+                                <DropShadowEffect 
+                                    ShadowDepth="5"
+                                    Direction="315"
+                                    Opacity="0.4"
+                                    Color="Black"
+                                    />
+                            </Button.Effect>
+                        </Button>
+
+                        <Button x:Name="btnSalir" 
+                            Content="S A L I R"
+                            Height="40" 
+                            Margin="0,20,0,20"
+                            Cursor="Hand"
+                            Foreground="#F5F5F5"
+                            FontFamily="Square721 BT"
+                            FontWeight="SemiBold"
+                            FontSize="12"                                                        
+                            HorizontalContentAlignment="Left"
+                            Click="btnClose_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#282525"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#f9b573"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Button.Effect>
+                                <DropShadowEffect 
+                            ShadowDepth="5"
+                            Direction="315"
+                            Opacity="0.4"
+                            Color="Black"
+                            />
+                            </Button.Effect>
+                        </Button>                        
+                    </StackPanel>
+                </Grid> 
+            </Grid>                        
+        </Grid>
+    </Border> 
 </Window>

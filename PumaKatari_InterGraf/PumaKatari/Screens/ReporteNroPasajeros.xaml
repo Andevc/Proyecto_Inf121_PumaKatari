@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PumaKatari.Screens"
         mc:Ignorable="d"
+        Icon="/Screens/log.png"
         Title="ReporteNroPasajeros" Height="450" Width="800">
     <Grid>
         

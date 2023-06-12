@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\dotnet\PumaKatari\PumaKatari_InterGraf\PumaKatari\App.xaml
-13-1480883084
+14428075033
 
-291329508311
+30-1054232223
 1942146798439
-Puma_Katari.xaml;Screens\BusesRuta.xaml;Screens\DataFill\Datos_Bus.xaml;Screens\DataFill\Datos_Empleado.xaml;Screens\DataFill\Datos_Ruta.xaml;Screens\DataFill\Fecha_Recorridos.xaml;Screens\Fechas_Recorrido.xaml;Screens\IngresosJornada.xaml;Screens\Registro_Buses.xaml;Screens\Registro_Empleados.xaml;Screens\Registro_Rutas.xaml;Screens\ReporteNroPasajeros.xaml;Screens\TrayectoRuta.xaml;
+Puma_Katari.xaml;Screens\BusesRuta.xaml;Screens\DataFill\Datos_Bus.xaml;Screens\DataFill\Datos_Empleado.xaml;Screens\DataFill\Datos_Ruta.xaml;Screens\DataFill\Fecha_Recorridos.xaml;Screens\DataFill\Paradas.xaml;Screens\Fechas_Recorrido.xaml;Screens\IngresosJornada.xaml;Screens\Registro_Buses.xaml;Screens\Registro_Empleados.xaml;Screens\Registro_Rutas.xaml;Screens\ReporteNroPasajeros.xaml;Screens\TrayectoRuta.xaml;
 
 True
 

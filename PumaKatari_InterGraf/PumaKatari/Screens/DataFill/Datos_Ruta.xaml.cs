@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PumaKatariConsola;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,30 @@ namespace PumaKatari.Screens.DataFill
         public Datos_Ruta()
         {
             InitializeComponent();
+        }
+
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {            
+            for (int i = 0; i < int.Parse(txtNroParadas.Text); i++)
+            {
+                Screens.DataFill.Paradas regParadas = new Screens.DataFill.Paradas();
+                regParadas.NroParada = i + 1;
+                regParadas.ShowDialog();
+            }
+
+            string nomRuta = txtNombreRuta.Text;
+            string tarifa = txtTarifa.Text;
+            string nroParadas = txtNroParadas.Text;
+            ArchRuta regRuta = new ArchRuta("RegistroRutas.dat");
+            regRuta.AdiRuta(nomRuta,tarifa,nroParadas);
+
+            this.Close();
+
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

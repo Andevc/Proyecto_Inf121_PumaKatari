@@ -25,7 +25,8 @@ namespace PumaKatari.Screens {
 
         }
 
-        private void btnCrearReg_Click(object sender, RoutedEventArgs e) {
+        private void btnCrear_Click(object sender, RoutedEventArgs e)
+        {
             regEmp.CrearRegEmpl();
             MessageBox.Show("Nuevo Registro De Empleados Creado");
         }
@@ -60,5 +61,7 @@ namespace PumaKatari.Screens {
         private void btnClose_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
+
+        
     }
 }

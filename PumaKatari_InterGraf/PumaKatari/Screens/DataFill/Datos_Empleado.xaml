@@ -5,18 +5,200 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PumaKatari.Screens.DataFill"
         mc:Ignorable="d"
-        Title="Datos_Empleado" Height="450" Width="480">
-    <Grid>
-        <Label Content="DATOS EMPLEADO" HorizontalAlignment="Left" Margin="178,24,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nombre : " HorizontalAlignment="Left" Margin="115,80,0,0" VerticalAlignment="Top"/>
-        <Label Content="Edad : " HorizontalAlignment="Left" Margin="115,120,0,0" VerticalAlignment="Top"/>
-        <Label Content="ID Empleado : " HorizontalAlignment="Left" Margin="94,160,0,0" VerticalAlignment="Top"/>
-        <Label Content="Cargo : " HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.687,-1.732"/>
-        <TextBox x:Name="txtNombreEmp" HorizontalAlignment="Left" Margin="240,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtEdadEmp" HorizontalAlignment="Left" Margin="240,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtIdEmp" HorizontalAlignment="Left" Margin="240,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtCargoEmp" HorizontalAlignment="Left" Margin="240,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-        <Button x:Name="btnAdicionar" Content="AGREGAR" HorizontalAlignment="Center" Margin="0,259,0,0" VerticalAlignment="Top" Height="40" Width="207" Click="btnAdicionar_Click"/>
-        <Button x:Name="btnCancel" Content="CANCELAR" HorizontalAlignment="Center" Margin="0,319,0,0" VerticalAlignment="Top" Height="40" Width="206" Click="btnCancel_Click"/>
-    </Grid>
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Datos Del Empleado" Height="450" Width="350"
+        Icon="/Screens/DataFill/log.png">
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="/Screens/DataFill/bgData.png"
+                        AlignmentX="Center"
+                        AlignmentY="Center"
+                        Stretch="Fill"/>
+        </Border.Background>
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="200" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="DATOS EMPLEADO"
+                           Foreground="#282525"
+                           HorizontalAlignment="Left"
+                           FontSize="25"
+                           FontFamily="Square721 BT"
+                           FontWeight="Bold" >
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Orientation="Vertical">
+                
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,10">
+                    <TextBlock  Text="Nombre : " 
+                                FontFamily="Square721 BT"
+                                Margin="5,0"
+                                />
+
+                    <TextBox x:Name="txtNombre"
+                             Width="150" Height="20" 
+                             Margin="5,0"
+                             FontFamily="Square721 BT"
+                             Background="Transparent"
+                             Foreground="Black"
+                             CaretBrush="Gray"
+                             BorderBrush="#1C1D24"
+                             BorderThickness="0,0,0,1"
+                             VerticalContentAlignment="Center" 
+                     />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right"
+                            Margin="0,10">
+                    <TextBlock  Text="Edad : " 
+                                FontFamily="Square721 BT"
+                                Margin="5,0"/>
+                    <TextBox x:Name="txtEdad"
+                             Margin="5,0"
+                             Width="150" Height="20" 
+                             FontFamily="Square721 BT"
+                             Background="Transparent"
+                             Foreground="Black"
+                             CaretBrush="Gray"
+                             BorderBrush="#1C1D24"
+                             BorderThickness="0,0,0,1"
+                             VerticalContentAlignment="Center" 
+                     />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,10">
+                    <TextBlock  Text="ID Empleado : " 
+                                FontFamily="Square721 BT"
+                                Margin="5,0" />
+                    <TextBox x:Name="txtIdEmpleado"
+                             Margin="5,0"
+                             Width="150" Height="20" 
+                             FontFamily="Square721 BT"
+                             Background="Transparent"
+                             Foreground="Black"
+                             CaretBrush="Gray"
+                             BorderBrush="#1C1D24"
+                             BorderThickness="0,0,0,1"
+                             VerticalContentAlignment="Center"
+                     />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right"
+                            Margin="0,10">
+                    <TextBlock  Text="Cargo : " 
+                                FontFamily="Square721 BT"
+                                Margin="5,0" />
+                    <TextBox x:Name="txtCargo"
+                             Margin="5,0"
+                             Width="150" Height="20" 
+                             FontFamily="Square721 BT"
+                             Background="Transparent"
+                             Foreground="Black"
+                             CaretBrush="Gray"
+                             BorderBrush="#1C1D24"
+                             BorderThickness="0,0,0,1"
+                             VerticalContentAlignment="Center"
+                     />
+                </StackPanel> 
+            </StackPanel>
+            
+            <StackPanel Grid.Row="2"
+                        VerticalAlignment="Center">
+                <Button x:Name="btnAgregar" 
+                        Content="A G R E G A R"
+                        Margin="0,10"                    
+                        Height="40" Width="160" 
+                        Foreground="White"
+                        FontFamily="Square721 BT"
+                        FontWeight="Bold"
+                        FontSize="12"
+                        Cursor="Hand"                    
+                        Click="btnAgregar_Click" 
+                    >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#282525"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#f9b573"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="5"
+                                          Direction="315"
+                                          Opacity="0.4"
+                                          Color="Black"
+                        />
+                    </Button.Effect>
+                </Button>
+
+                <Button x:Name="btnCancel" 
+                        Content="C A N C E L A R"  
+                        Margin="0,10"
+                        Height="40" Width="160" 
+                        Foreground="White"
+                        FontFamily="Square721 BT"
+                        FontWeight="Bold"
+                        FontSize="12"
+                        Cursor="Hand"
+                        Click="btnCancel_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#282525"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#f9b573"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="5"
+                                          Direction="315"
+                                          Opacity="0.4"
+                                          Color="Black"
+                        />
+                    </Button.Effect>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+    
 </Window>

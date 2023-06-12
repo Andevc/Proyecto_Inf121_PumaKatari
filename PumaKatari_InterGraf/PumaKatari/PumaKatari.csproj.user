@@ -22,6 +22,9 @@
     <Compile Update="Screens\DataFill\Fecha_Recorridos.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Screens\DataFill\Paradas.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Screens\Fechas_Recorrido.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -61,6 +64,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Screens\DataFill\Fecha_Recorridos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Screens\DataFill\Paradas.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Screens\Fechas_Recorrido.xaml">

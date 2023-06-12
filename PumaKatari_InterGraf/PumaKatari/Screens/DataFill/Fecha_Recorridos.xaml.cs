@@ -24,16 +24,14 @@ namespace PumaKatari.Screens.DataFill
         {
             InitializeComponent();
         }
-
-        private void btnAdiFr_click(object sender, RoutedEventArgs e)
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
+            string fecha = txtFechaRec.Text;
             string idBus = txtIdBus.Text;
-            string fecha = txtFecha.Text;
             ArchFecha regFecha = new ArchFecha("RegistroFechas.dat");
             regFecha.AdiFecha(idBus, fecha);
             this.Close();
         }
-
         private void btnCancel_click(object sender, RoutedEventArgs e)
         {
             this.Close();

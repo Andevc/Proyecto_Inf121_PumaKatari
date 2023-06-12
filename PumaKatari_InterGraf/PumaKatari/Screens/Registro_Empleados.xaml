@@ -5,38 +5,234 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PumaKatari.Screens"
         mc:Ignorable="d"
-        Title="Registro_Empleados" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="dgEmpelados" Margin="70,74,310,74"/>
-        
-        
-        <Button x:Name="btnCrearReg" 
-                Height="50" Width="135"         
-                Content="Crear" 
-                HorizontalAlignment="Left" 
-                Margin="580,74,0,0" 
-                VerticalAlignment="Top" 
-                
-                Click="btnCrearReg_Click"> 
-    </Button>
-        <Button x:Name="btnAdicionar" 
-                Height="50" Width="135"        
-                Content="ADICIONAR" 
-                HorizontalAlignment="Left" 
-                Margin="580,167,0,0" 
-                VerticalAlignment="Top" 
-                
-                Click="btnAdicionar_Click"> 
-        </Button>
-        <Button x:Name="btnClose" 
-                Height="50" Width="135"        
-                Content="CANCELAR" 
-                HorizontalAlignment="Left" 
-                Margin="580,269,0,0" 
-                VerticalAlignment="Top" 
-                
-                Click="btnClose_Click"> 
-        </Button>
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Icon="/Screens/log.png"
+        Title="Registro_Empleados" Height="450" Width="750">
 
-    </Grid>
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="/Screens/bRegEmpleados.png"/>
+        </Border.Background>
+        <Grid Margin="10,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <Grid>
+                <TextBlock Text="R E G I S T R O   E M P L E A D O S"
+                           Foreground="#282525"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="30"
+                           FontFamily="Square721 BT"
+                           FontWeight="SemiBold"     
+                           Margin="70,0,0,0"
+                       >
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="Black"
+                                          Direction="270"                  
+                                          Opacity="0.5"
+                                          ShadowDepth="5"
+                                          BlurRadius="10"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="200" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <DataGrid x:Name="dgEmpelados" Margin="0,5,0,0"
+                              CanUserResizeColumns="False"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="Column"
+                              Background="#AAf5f5f5"
+                              BorderBrush="#282525"
+                              BorderThickness="2"
+                              ColumnWidth="SizeToCells" 
+                              FontFamily="Square721 BT"
+                              FrozenColumnCount="4" 
+                              Height="279" Width="450">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}" >
+                                <Setter Property="Background" Value="#282525" />
+                                <Setter Property="Foreground" Value="#F5F5F5" />
+                                <Setter Property="BorderBrush" Value="#F5F5F5" />
+                                <Setter Property="BorderThickness" Value="0,0,2,0" />
+                            </Style>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers >
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#AAf9b573" />
+                                        <Setter Property="Foreground" Value="#282525" />
+                                        <Setter Property="BorderBrush" Value="#F5F5F5" />
+
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.Resources>
+
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header=" Nombre"
+                                                    Width="110" 
+                                                    IsReadOnly="True"
+                                                    Binding="{Binding Nombre}" />
+
+                            <DataGridTextColumn Header=" Edad" 
+                                                    Width="85"
+                                                    IsReadOnly="True"
+                                                    Binding="{Binding Edad}" />
+                            <DataGridTextColumn Header=" ID " 
+                                                    Width="110"
+                                                    IsReadOnly="True"
+                                                    Binding="{Binding Id}" />
+                            <DataGridTextColumn Header=" Cargo" 
+                                                    Width="125"
+                                                    IsReadOnly="True"
+                                                    Binding="{Binding Cargo}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    
+                    <Button x:Name="btnCrear" 
+                        Content="C R E A R"
+                        Height="40" 
+                        Margin="0,20,0,20"
+                        Cursor="Hand"
+                        Foreground="#F5F5F5"
+                        FontFamily="Square721 BT"
+                        FontWeight="SemiBold"
+                        FontSize="12"                                                        
+                        HorizontalContentAlignment="Left"
+                        Click="btnCrear_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#282525"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#f9b573"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                        <Button.Effect>
+                            <DropShadowEffect 
+                        ShadowDepth="5"
+                        Direction="315"
+                        Opacity="0.4"
+                        Color="Black"
+                        />
+                        </Button.Effect>
+
+                    </Button>
+
+                    <Button x:Name="btnAdicionar" 
+                        Content="A D I C I O N A R"
+                        Height="40" 
+                        Margin="0,20,0,20"
+                        Cursor="Hand"
+                        Foreground="#F5F5F5"
+                        FontFamily="Square721 BT"
+                        FontWeight="SemiBold"
+                        FontSize="12"                                                        
+                        HorizontalContentAlignment="Left"
+                        Click="btnAdicionar_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#282525"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#f9b573"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                        <Button.Effect>
+                            <DropShadowEffect 
+                                ShadowDepth="5"
+                                Direction="315"
+                                Opacity="0.4"
+                                Color="Black"
+                                />
+                        </Button.Effect>
+
+                    </Button>
+
+                    <Button x:Name="btnSalir" 
+                            Content="S A L I R"
+                            Height="40" 
+                            Margin="0,20,0,20"
+                            Cursor="Hand"
+                            Foreground="#F5F5F5"
+                            FontFamily="Square721 BT"
+                            FontWeight="SemiBold"
+                            FontSize="12"                                                        
+                            HorizontalContentAlignment="Left"
+                            Click="btnClose_Click">
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#282525"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#f9b573"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                            <Button.Effect>
+                                <DropShadowEffect 
+                            ShadowDepth="5"
+                            Direction="315"
+                            Opacity="0.4"
+                            Color="Black"
+                            />
+                            </Button.Effect>
+                        </Button>    
+                    
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+    </Border>
 </Window>

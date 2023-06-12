@@ -80,3 +80,5 @@ D:\dotnet\PumaKatari\PumaKatari_InterGraf\PumaKatari\obj\Debug\net6.0-windows\Sc
 D:\dotnet\PumaKatari\PumaKatari_InterGraf\PumaKatari\obj\Debug\net6.0-windows\Screens\TrayectoRuta.baml
 D:\dotnet\PumaKatari\PumaKatari_InterGraf\PumaKatari\obj\Debug\net6.0-windows\Puma_Katari.g.cs
 D:\dotnet\PumaKatari\PumaKatari_InterGraf\PumaKatari\obj\Debug\net6.0-windows\Puma_Katari.baml
+D:\dotnet\PumaKatari\PumaKatari_InterGraf\PumaKatari\obj\Debug\net6.0-windows\Screens\DataFill\Paradas.g.cs
+D:\dotnet\PumaKatari\PumaKatari_InterGraf\PumaKatari\obj\Debug\net6.0-windows\Screens\DataFill\Paradas.baml
