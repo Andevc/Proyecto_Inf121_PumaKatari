@@ -32,7 +32,7 @@ namespace PumaKatariConsola {
                     jornada.RdFecha(read);
                     if(jornada.FechaReg == fecha)
                     {
-                        insgresos = bus.BuscarBus(jornada.IdBus,ruta);
+                        insgresos = bus.BuscarBus(jornada.IdBus,ruta,insgresos);
                     }
                 }
             }

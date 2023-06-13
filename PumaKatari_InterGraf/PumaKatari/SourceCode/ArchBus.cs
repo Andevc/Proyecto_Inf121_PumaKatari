@@ -3,6 +3,7 @@ using System.IO ;
 using System.Numerics;
 using System.Printing;
 using System.Security.Cryptography.X509Certificates;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PumaKatariConsola {
@@ -48,9 +49,9 @@ namespace PumaKatariConsola {
                 x.AdiPasajero(pasajeroRnd, i);
             }
         }
-        public double BuscarBus(string idBus, ArchRuta ruta)
+        public double BuscarBus(string idBus, ArchRuta ruta, double insgresos)
         {
-            double ingresoBus = 0;
+            
             Stream file = File.Open(nomArch,FileMode.Open);
             BinaryReader read = new BinaryReader(file);
             try
@@ -62,18 +63,17 @@ namespace PumaKatariConsola {
                     if(bus.Id == idBus)
                     {
                         for (int i = 0; i < bus.NroPasajeros; i++)
-                        {
+                        {                            
                             string tipoPj = bus.Pasajeros[i].TipoPasajero;
-                            ingresoBus = ingresoBus + TarifaTipoPersona(tipoPj,ruta,bus.NomRuta);
+                            insgresos = insgresos + TarifaTipoPersona(tipoPj,ruta,bus.NomRuta);                            
                         }
                     }
                 }
-
             }
             catch (Exception) { Console.WriteLine("--x-- Fin Buscar Bus --x--"); }
             finally { file.Close(); }
 
-            return ingresoBus;
+            return insgresos;
         }
 
         public double TarifaTipoPersona(string tipoPersona, ArchRuta ruta, string nomRuta)
@@ -90,10 +90,8 @@ namespace PumaKatariConsola {
             Bus bus = new Bus();
             Stream file = File.Open(nomArch,FileMode.OpenOrCreate);
             BinaryReader read = new BinaryReader(file);
-            try
-            {
-                while (true)
-                {
+            try {
+                while (true) {
                     bus = new Bus();
                     bus.RdBus(read);
                     if(bus.Id == idBus)
@@ -102,10 +100,31 @@ namespace PumaKatariConsola {
                     }
                 }
             }
-            catch (Exception) { Console.WriteLine("--x-- Fin Buscar Bus"); }
+            catch (Exception) { Console.WriteLine("--x-- Fin Buscar Bus --x-- "); }
             finally { file.Close(); }
             
             return bus;
+        }
+
+        public int mayPasajeros(string nomRuta)
+        {   int cantPasajeros = 0;
+            Stream file = File.Open(nomArch, FileMode.OpenOrCreate);
+            BinaryReader read = new BinaryReader(file);
+            try
+            {
+                while (true)
+                {
+                    Bus bus = new Bus();
+                    bus.RdBus(read);
+                    if (bus.NomRuta == nomRuta)
+                    {
+                        cantPasajeros = cantPasajeros + bus.NroPasajeros;
+                    }
+                }
+            }
+            catch (Exception) { Console.WriteLine("--x-- Fin Buscar Bus --x-- "); }
+            finally { file.Close(); }
+            return cantPasajeros;
         }
     }
 }

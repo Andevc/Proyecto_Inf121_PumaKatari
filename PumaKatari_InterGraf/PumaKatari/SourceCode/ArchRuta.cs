@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Windows;
+
 namespace PumaKatariConsola {
     public class ArchRuta {
         private string nomArch;
@@ -11,9 +13,9 @@ namespace PumaKatariConsola {
             BinaryWriter write = new BinaryWriter(file);
             Console.WriteLine("\n- REGISTRO DE RUTAS (Limite 7): ");
             try {         
-            Ruta regRuta = new Ruta(nomRuta,int.Parse(nroParadas),Double.Parse(tarifa),parada);
-            write.Seek(0,SeekOrigin.End);
-            regRuta.WriteRuta(write);            
+                Ruta regRuta = new Ruta(nomRuta,int.Parse(nroParadas),Double.Parse(tarifa),parada);
+                write.Seek(0,SeekOrigin.End);
+                regRuta.WriteRuta(write);            
             }
             catch (Exception){ Console.WriteLine("\n--x-- Fin Registro Rutas --x--\n"); }
             finally { file.Close(); }
@@ -41,6 +43,32 @@ namespace PumaKatariConsola {
             return tarifa;
         }
 
+        public string RutaMayPasajeros(ArchBus regBus)
+        {
+            int mayPasjRuta = 0;
+            string nomRuta = "";
+            Stream file = File.Open(nomArch,FileMode.OpenOrCreate);
+            BinaryReader read = new BinaryReader(file);
+            try
+            {
+                while (true)
+                {
+                    Ruta ruta = new Ruta(); 
+                    ruta.RdRuta(read);
+                    string nombreRuta = ruta.NomRuta;
+                    int nroPasajeros = regBus.mayPasajeros(nombreRuta);
+                    MessageBox.Show("NomRuta: "+nombreRuta+"\tCant Pj: "+nroPasajeros);
+                    if (nroPasajeros > mayPasjRuta)
+                    {
+                        mayPasjRuta = nroPasajeros;
+                        nomRuta = ruta.NomRuta;
+                    }
+                }
+            }
+            catch (Exception) { Console.WriteLine("--x-- Fin Ruta con Mayor Cantidad de Pasajeros --x--"); }
+            finally { file.Close(); }
+            return nomRuta;
+        }
       
     }
 }

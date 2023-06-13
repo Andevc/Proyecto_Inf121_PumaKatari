@@ -34,7 +34,7 @@ namespace PumaKatari.Screens
             ArchFecha archFecha = new ArchFecha("RegistroFechas.dat");
             ActualizarRegistro(txtFechaJornada.Text, archBus);
             double ingreso = archFecha.IngresoJornada(txtFechaJornada.Text,archBus,archRuta);
-
+            MessageBox.Show("Ingresos: "+ingreso );
             txtIngresoJornada.Text = "Los ingresos que ocurrieron durante la jornada del "+txtFechaJornada.Text+
                 " tiene un monto total de: "+ingreso.ToString("0.00");
         }

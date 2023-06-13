@@ -32,6 +32,7 @@ namespace PumaKatari.Screens
         {
             regBus.CrearRegBus();
             MessageBox.Show("Nuevo registro de Buses Creado");
+            ActualizarArchivo();
 
         }
         private void btnAdicionar_Click(object sender, RoutedEventArgs e)

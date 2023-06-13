@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PumaKatari.Screens"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
         Icon="/Screens/log.png"
         Title="IngresosJornada" Height="450" Width="650">
     <Border>
@@ -88,7 +90,7 @@
                               ColumnWidth="SizeToCells" 
                               FontFamily="Square721 BT"
                               FrozenColumnCount="6" 
-                              Height="200" Width="250">
+                              Height="200" Width="350">
                             <DataGrid.Resources>
                                 <Style TargetType="{x:Type DataGridColumnHeader}" >
                                     <Setter Property="Background" Value="#282525" />
@@ -118,7 +120,10 @@
                                                     Width="100"
                                                     IsReadOnly="True"
                                                     Binding="{Binding Id}" />
-                                
+                                <DataGridTextColumn Header=" Nro Pasajeros" 
+                                                    Width="100"
+                                                    IsReadOnly="True"
+                                                    Binding="{Binding NroPasajeros}" />
                                 
                             </DataGrid.Columns>
                         </DataGrid>
@@ -127,24 +132,25 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Margin="0,10,-40,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <StackPanel Margin="5,25,-35,5"
+                <StackPanel Margin="0,20,0,20"
+                            HorizontalAlignment="Left"
                             >
                     <TextBlock Text="Fecha de la Jornada : " 
-                               Margin="10,0,0,0"
                                FontFamily="Square721 BT"
                                FontSize="15"
                                FontWeight="Bold"                               
-                           >
-                    </TextBlock>
+                           />
+                    
                     <TextBox x:Name="txtFechaJornada"
+                             HorizontalAlignment="Left"
                              Margin="0,10,0,0"
                              Padding="20,0,0,0"
-                             Height="20" Width="120"
+                             Height="20" Width="170"
                              BorderThickness="0,0,0,1"
                              BorderBrush="Black"
                              FontFamily="Square721 BT"

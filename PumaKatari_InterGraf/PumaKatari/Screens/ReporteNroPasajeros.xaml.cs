@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PumaKatariConsola;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,26 +24,29 @@ namespace PumaKatari.Screens
         public ReporteNroPasajeros()
         {
             InitializeComponent();
+            RutaMayPasajeros();
+        }
+
+        private void RutaMayPasajeros()
+        {
+            ArchBus regBus = new ArchBus("RegistroBuses.dat");
+            ArchRuta regRuta = new ArchRuta("RegistroRutas.dat");
+
+            string nomRuta = regRuta.RutaMayPasajeros(regBus);
+            int nroPasajeros = regBus.mayPasajeros(nomRuta);
+            txtReporte.Text = "Reporte de La Ruta con Mayor Cantidad de Pasajeros\n" +
+                "\nIntroducción:" +
+                "\nEste reporte presenta información sobre la ruta con mayor cantidad de pasajeros." +
+                "\n\nResultados:" +
+                "\nUn total de "+nroPasajeros+" pasajeros utilizaron la ruta \"" + nomRuta +"\""+
+                "\n\nConclusiones:" +
+                "\r\nLa ruta \"" + nomRuta +"\" tuvo una cantidad significativa de pasajeros desde el inicio de operaciones de los Buses Puma Katari.";
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
 
-/*
- * 
- * Reporte de Cantidad de Pasajeros en la Ruta de Buses X
-
-Fecha: 1 de enero de 2023
-
-Introducción:
-Este reporte presenta información sobre la cantidad de pasajeros que utilizaron la ruta de buses X durante el mes de diciembre de 2022.
-
-Métodos:
-Se recopiló información sobre la cantidad de pasajeros que abordaron cada bus en la ruta X durante el mes de diciembre de 2022. Los datos fueron recolectados por los conductores de los buses y registrados en un sistema centralizado.
-
-Resultados:
-Durante el mes de diciembre de 2022, un total de 15,000 pasajeros utilizaron la ruta de buses X. La cantidad promedio de pasajeros por día fue de 500.
-
-Conclusiones:
-La ruta de buses X tuvo una cantidad significativa de pasajeros durante el mes de diciembre de 2022. Se recomienda continuar monitoreando la cantidad de pasajeros en esta ruta para asegurar que se estén proporcionando suficientes buses para satisfacer la demanda.
- * 
- */

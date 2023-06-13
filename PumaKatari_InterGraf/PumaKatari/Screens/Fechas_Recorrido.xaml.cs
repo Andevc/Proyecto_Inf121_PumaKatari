@@ -26,6 +26,7 @@ namespace PumaKatari.Screens {
         private void btnCrear_Click(object sender, RoutedEventArgs e) {
             fechaRecorrida.CrearRegFecha();
             MessageBox.Show("Nuevo Archivo Fecha Recorrido Creada");
+            ActualizarArchivo();
         }
         private void btnAdicionar_Click(object sender, RoutedEventArgs e) {
             DataFill.Fecha_Recorridos fechaRecorridos = new DataFill.Fecha_Recorridos();

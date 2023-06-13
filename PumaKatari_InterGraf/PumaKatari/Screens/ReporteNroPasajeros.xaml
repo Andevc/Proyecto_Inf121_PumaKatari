@@ -5,9 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PumaKatari.Screens"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
         Icon="/Screens/log.png"
-        Title="ReporteNroPasajeros" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="ReporteNroPasajeros" Height="450" Width="600">
+    <Border CornerRadius="50"
+            BorderBrush="Black"
+            BorderThickness="4">
+        <Border.Background>
+            <ImageBrush ImageSource="/Screens/bRegEmpleados.png"/>
+        </Border.Background>
+        <Grid Margin="40">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            
+            <Border BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="30"
+                    Background="#F5F5F5"
+                    Width="450" Height="280">
+                <TextBlock x:Name="txtReporte"
+                           TextWrapping="Wrap"
+                           TextAlignment="Left"
+                           Padding="20"
+                            
+                       />
+            </Border>
+            <StackPanel Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Button x:Name="btnClose" 
+                            Content="X"
+                            Height="50" Width="50" 
+                            Margin="10,20,10,20"
+                            Cursor="Hand"
+                            Foreground="#F5F5F5"
+                            FontFamily="Square721 BT"
+                            FontWeight="Bold"
+                            FontSize="20"                                                        
+                            HorizontalContentAlignment="Left"
+                            Click="btnClose_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#282525"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#f9b573"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="50"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <Button.Effect>
+                        <DropShadowEffect 
+                            ShadowDepth="5"
+                            Direction="315"
+                            Opacity="0.4"
+                            Color="Black"
+                            />
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+            
+
+        </Grid>
+    </Border>
 </Window>

@@ -29,6 +29,7 @@ namespace PumaKatari.Screens {
         {
             regEmp.CrearRegEmpl();
             MessageBox.Show("Nuevo Registro De Empleados Creado");
+            ActualizarArchivo();
         }
 
         private void btnAdicionar_Click(object sender, RoutedEventArgs e) {
