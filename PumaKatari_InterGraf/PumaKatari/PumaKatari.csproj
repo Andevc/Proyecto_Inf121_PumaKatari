@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="bgMain_PumaKatari.png" />
     <Resource Include="log.png" />
     <Resource Include="Screens\bgBusesRutaX.png" />
