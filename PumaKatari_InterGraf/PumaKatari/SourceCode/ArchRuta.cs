@@ -45,7 +45,7 @@ namespace PumaKatariConsola {
 
         public string RutaMayPasajeros(ArchBus regBus)
         {
-            int mayPasjRuta = 0;
+            int mayPasajeros = 0;
             string nomRuta = "";
             Stream file = File.Open(nomArch,FileMode.OpenOrCreate);
             BinaryReader read = new BinaryReader(file);
@@ -54,15 +54,18 @@ namespace PumaKatariConsola {
                 while (true)
                 {
                     Ruta ruta = new Ruta(); 
-                    ruta.RdRuta(read);
+                    ruta.ReadRuta(read);
+                    
+
                     string nombreRuta = ruta.NomRuta;
                     int nroPasajeros = regBus.mayPasajeros(nombreRuta);
-                    MessageBox.Show("NomRuta: "+nombreRuta+"\tCant Pj: "+nroPasajeros);
-                    if (nroPasajeros > mayPasjRuta)
+                    if(nroPasajeros > mayPasajeros)
                     {
-                        mayPasjRuta = nroPasajeros;
-                        nomRuta = ruta.NomRuta;
+                        mayPasajeros= nroPasajeros;
+                        nomRuta = nombreRuta;
                     }
+                    
+                    
                 }
             }
             catch (Exception) { Console.WriteLine("--x-- Fin Ruta con Mayor Cantidad de Pasajeros --x--"); }

@@ -39,12 +39,6 @@ namespace PumaKatariConsola {
             for (int i = 0; i < this.nroParadas; i++) { this.paradas[i] = new Parada(); this.paradas[i].RdParada(j);}
         }
 
-        public void RdRuta(BinaryReader j)
-        {
-            this.nomRuta = j.ReadString();
-            this.nroParadas = j.ReadInt32();
-            this.tarifa.RdPasaje(j);
-        }
 
         // Write Ruta
         public void WriteRuta(BinaryWriter j){
