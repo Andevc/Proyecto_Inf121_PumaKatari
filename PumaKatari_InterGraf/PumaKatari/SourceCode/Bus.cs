@@ -30,7 +30,7 @@ namespace PumaKatariConsola {
         public Pasajero[] Pasajeros { get { return this.pasajeros; } set {this.pasajeros = value; } }    
 
         // Adicionar Objetos Pasajero Al Vector Pasajeros
-        public void AdiPasajero(Pasajero x, int i){ pasajeros[i] = x; }
+        public void AdiPasajero(Pasajero x,int i){ pasajeros[i] = x; }
         // Read Bus
         public void RdBus(BinaryReader j){
             this.placa = j.ReadString();
@@ -39,6 +39,11 @@ namespace PumaKatariConsola {
             this.nomRuta = j.ReadString();
             this.idConductor = j.ReadString();
             this.idPersApoyo = j.ReadString();
+            for(int i = 0; i < this.nroPasajeros; i++)
+            {
+                this.pasajeros[i] = new Pasajero();
+                this.pasajeros[i].readPasajero(j);
+            }
         }
         // Write Bus
         public void WrBus(BinaryWriter j){
@@ -48,6 +53,10 @@ namespace PumaKatariConsola {
             j.Write(this.nomRuta);
             j.Write(this.idConductor);
             j.Write(this.idPersApoyo);   
+            for(int i = 0; i < this.nroPasajeros; i++)
+            {
+                this.pasajeros[i].writePasajero(j);
+            }
         }
 
         // Codigo No Usado

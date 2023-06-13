@@ -36,8 +36,7 @@ namespace PumaKatari.Screens.DataFill
                 regParadas.ShowDialog();
                 parada[i] =new Parada(regParadas.txtUbicaconParada.Text);
             }
-    
-                string nomRuta = txtNombreRuta.Text;
+            string nomRuta = txtNombreRuta.Text;
             string tarifa = txtTarifa.Text;
             string nroParadas = txtNroParadas.Text;
             ArchRuta regRuta = new ArchRuta("RegistroRutas.dat");
@@ -45,7 +44,6 @@ namespace PumaKatari.Screens.DataFill
             regRuta.AdiRuta(nomRuta,tarifa,nroParadas,parada);
 
             this.Close();
-
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
